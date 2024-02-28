@@ -50,6 +50,8 @@ public:
   void EscaleraBaja() const;
   void TriangularInferior() const;
   void TriangularSuperior() const;
+  void EscaleraSecundaria() const;
+  void EscaleraBajaSecundaria() const;
 
 private:
   int m_, n_; // m_ filas y n_ columnas
@@ -186,20 +188,28 @@ matrix_t<T>::pos(const int i, const int j) const
 
 
 // FASE III: producto matricial
+
+/**
+  * @brief Este metodo calcula la multiplicacion entre dos matrices y 
+  *        almacena el resultado en el objeto que la llame
+  *
+  * @param A La primera matriz a multiplicar.
+  * @param B La segunda matriz a multiplicar
+  */
 template<class T>
 void
 matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)
 {
   assert(A.get_n() == B.get_m());
-  int m{A.get_m()};
-  int p{B.get_n()};
-  int n{B.get_m()};
+  int filas_primera_matriz{A.get_m()};
+  int columnas_segunda_matriz{B.get_n()};
+  int posiciones_fila_columna{B.get_m()};
   resize( A.get_m(), B.get_n());
-  for (int i{1}; i <= m; i++) {  // En este for se recorren las distintas filas de la matriz izq 
+  for (int i{1}; i <= filas_primera_matriz; i++) {  // En este for se recorren las distintas filas de la matriz izq 
     T temp = 0;
-    for (int j = 1; j <= p; j++) {  // En este for se recorren las columnas de la segunda matriz
+    for (int j = 1; j <= columnas_segunda_matriz; j++) {  // En este for se recorren las columnas de la segunda matriz (el contenido de las filas)
       temp = 0;
-      for (int k = 1; k <= n; k++) {  
+      for (int k = 1; k <= posiciones_fila_columna; k++) {  
       // En este for se recorren las posiciones de las columnas 
       // de la segunda matriz y ademas las posiciones de las filas de la primera, pues estas comparten la misma posicion k.
       
@@ -262,5 +272,25 @@ void matrix_t<T>::TriangularSuperior() const {
       std::cout << at(fila, columna) << " ";
     }
     std::cout << std::endl;
+  }
+}
+template<class T>
+void matrix_t<T>::EscaleraSecundaria() const {
+   int rango{get_m()};
+  for (int posicion{1}; posicion <= rango; ++posicion) {
+    if (posicion == rango) {
+      std::cout << at(posicion, rango - posicion + 1);
+      break;
+    }
+    std::cout << at(posicion, rango - posicion + 1) << " " << at(posicion, rango - posicion) << " ";
+  }
+}
+
+template<class T>
+void matrix_t<T>::EscaleraBajaSecundaria() const {
+  int rango{get_m()};
+  std::cout << at(1, rango) << " ";
+  for (int posicion{2}; posicion <= rango; ++posicion) {
+    std::cout << at(posicion, rango - posicion + 2) << " " << at(posicion, rango - posicion + 1) << " ";
   }
 }

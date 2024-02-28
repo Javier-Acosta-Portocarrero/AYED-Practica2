@@ -77,7 +77,11 @@ int main()
   std::cout << std::endl;
   prueba_cuadrada.TriangularInferior();
   std::cout << std::endl;
-   prueba_cuadrada.TriangularSuperior();
+  prueba_cuadrada.TriangularSuperior();
+  std::cout << std::endl;
+  prueba_cuadrada.EscaleraSecundaria();
+  std::cout << std::endl;
+  prueba_cuadrada.EscaleraBajaSecundaria();
   std::cout << std::endl;
 
   return 0;

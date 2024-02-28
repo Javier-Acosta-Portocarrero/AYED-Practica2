@@ -139,23 +139,39 @@ rational_t::divide(const rational_t& r) const
 
 
 // FASE I: operadores
+
+/**
+  * @brief Esta sobrecarga del operador + define la suma entre racionales.
+  *
+  * @param a Primer racional a sumar.
+  * @param b Segundo racional a sumar.
+  * @return El resultado de la suma.
+  */
+
 rational_t
 operator+(const rational_t& a, const rational_t& b)
 {
   rational_t resultado_suma;
-  resultado_suma.set_num(a.get_num() * b.get_den() + b.get_num() + a.get_den());
+  resultado_suma.set_num(a.get_num() * b.get_den() + b.get_num() * a.get_den());
   resultado_suma.set_den(a.get_den() * b.get_den());
   return resultado_suma;
   // rellenar código
 }
 
 
+/**
+  * @brief Esta sobrecarga del operador - define la resta entre racionales.
+  *
+  * @param a Primer racional al que se le restará el segundo.
+  * @param b Segundo racional a restar.
+  * @return El resultado de la resta.
+  */
 
 rational_t
 operator-(const rational_t& a, const rational_t& b)
 {
   rational_t resultado_resta;
-  resultado_resta.set_num(a.get_num() * b.get_den() - b.get_num() + a.get_den
+  resultado_resta.set_num(a.get_num() * b.get_den() - b.get_num() * a.get_den
                                                                            ());
   resultado_resta.set_den(a.get_den() * b.get_den());
   return resultado_resta;
@@ -163,6 +179,13 @@ operator-(const rational_t& a, const rational_t& b)
 }
 
 
+/**
+  * @brief Esta sobrecarga del operador * define la multiplicacion entre racionales.
+  *
+  * @param a Primer racional a multiplicar.
+  * @param b Segundo racional a multiplicar.
+  * @return El resultado de la multiplicacion.
+  */
 
 rational_t
 operator*(const rational_t& a, const rational_t& b)
@@ -175,6 +198,13 @@ operator*(const rational_t& a, const rational_t& b)
 }
 
 
+/**
+  * @brief Esta sobrecarga del operador / define la division entre racionales.
+  *
+  * @param a Primer racional que sera el dividendo.
+  * @param b Segundo racional que sera el divisor.
+  * @return El resultado de la division.
+  */
 
 rational_t
 operator/(const rational_t& a, const rational_t& b)
