@@ -64,6 +64,21 @@ int main()
   C.multiply(A, B);
   cout << "Multiplicación de matrices A y B: " << endl;
   C.write();
-  
+
+  matrix_t<double> prueba_cuadrada;
+  prueba_cuadrada.read();
+  prueba_cuadrada.write();
+
+  prueba_cuadrada.EscaleraBaja();
+  cout << std::endl;
+  prueba_cuadrada.Escalera();
+  cout << std::endl;
+  prueba_cuadrada.DiagonalSecundaria();
+  std::cout << std::endl;
+  prueba_cuadrada.TriangularInferior();
+  std::cout << std::endl;
+   prueba_cuadrada.TriangularSuperior();
+  std::cout << std::endl;
+
   return 0;
 }
