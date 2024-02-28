@@ -255,7 +255,10 @@ template<class T>
 void matrix_t<T>::TriangularSuperior() const {
   int rango{get_m()};
   for (int fila{1}; fila <= rango; ++fila) {
-    for (int columna{rango}; columna >= fila; --columna) {
+    for (int espacios{0}; espacios <= fila -1; ++espacios) {
+      std::cout << "  ";
+    }
+    for (int columna{fila}; columna <= rango; ++columna) {
       std::cout << at(fila, columna) << " ";
     }
     std::cout << std::endl;
