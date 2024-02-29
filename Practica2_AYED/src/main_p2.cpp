@@ -65,24 +65,13 @@ int main()
   cout << "Multiplicación de matrices A y B: " << endl;
   C.write();
 
-  matrix_t<double> prueba_cuadrada;
-  prueba_cuadrada.read();
-  prueba_cuadrada.write();
-
-  prueba_cuadrada.EscaleraBaja();
-  cout << std::endl;
-  prueba_cuadrada.Escalera();
-  cout << std::endl;
-  prueba_cuadrada.DiagonalSecundaria();
-  std::cout << std::endl;
-  prueba_cuadrada.TriangularInferior();
-  std::cout << std::endl;
-  prueba_cuadrada.TriangularSuperior();
-  std::cout << std::endl;
-  prueba_cuadrada.EscaleraSecundaria();
-  std::cout << std::endl;
-  prueba_cuadrada.EscaleraBajaSecundaria();
-  std::cout << std::endl;
+  // Modificacion
+  vector_t<int> z;
+  z.read();
+  std::cout << "Estos son los elementos del vector_t siendo estos ";
+  z.write();
+  std::cout << "La suma de las posiciones multiplo de 3 de z es: " 
+            << z.SumarPosicionesMultiplosDe3() << std::endl;
 
   return 0;
 }

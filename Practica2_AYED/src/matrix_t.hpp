@@ -44,15 +44,6 @@ public:
   void write(ostream& = cout) const;
   void read(istream& = cin);
 
-  void DiagonalPrincipal() const;
-  void DiagonalSecundaria() const;
-  void Escalera() const;
-  void EscaleraBaja() const;
-  void TriangularInferior() const;
-  void TriangularSuperior() const;
-  void EscaleraSecundaria() const;
-  void EscaleraBajaSecundaria() const;
-
 private:
   int m_, n_; // m_ filas y n_ columnas
   vector_t<T> v_;
@@ -196,18 +187,23 @@ matrix_t<T>::pos(const int i, const int j) const
   * @param A La primera matriz a multiplicar.
   * @param B La segunda matriz a multiplicar
   */
+
 template<class T>
 void
 matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)
 {
   assert(A.get_n() == B.get_m());
+  resize(A.get_m(), B.get_n());
   int filas_primera_matriz{A.get_m()};
   int columnas_segunda_matriz{B.get_n()};
   int posiciones_fila_columna{B.get_m()};
-  resize( A.get_m(), B.get_n());
-  for (int i{1}; i <= filas_primera_matriz; i++) {  // En este for se recorren las distintas filas de la matriz izq 
+  for (int i{1}; i <= filas_primera_matriz; i++) {  
+    // En este for se recorren las distintas filas de la matriz izq 
     T temp = 0;
-    for (int j = 1; j <= columnas_segunda_matriz; j++) {  // En este for se recorren las columnas de la segunda matriz (el contenido de las filas)
+
+    for (int j = 1; j <= columnas_segunda_matriz; j++) {  
+      // En este for se recorren las distintas columnas de la segunda matriz.
+
       temp = 0;
       for (int k = 1; k <= posiciones_fila_columna; k++) {  
       // En este for se recorren las posiciones de las columnas 
@@ -217,80 +213,5 @@ matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)
       }
       at(i, j) = temp;
     }
-}
-  // rellenar código
-}
-
-template<class T>
-void matrix_t<T>::Escalera() const {
-  int rango{get_m()};
-  for (int posicion{1}; posicion <= rango; ++posicion) {
-    if (posicion == rango) {
-      std::cout << at(posicion, posicion);
-      break;
-    }
-    std::cout << at(posicion, posicion) << " " << at(posicion, posicion + 1) << " ";
-  }
-}
-
-template<class T>
-void matrix_t<T>::EscaleraBaja() const {
-  int rango{get_m()};
-  std::cout << at(1, 1) << " ";
-  for (int posicion{2}; posicion <= rango; ++posicion) {
-    std::cout << at(posicion, posicion - 1) << " " << at(posicion, posicion) << " ";
-  }
-}
-
-template<class T>
-void matrix_t<T>::DiagonalSecundaria() const{
-  int rango{get_m()};
-  for (int posicion{1}; posicion <= rango; ++posicion) {
-    std::cout << at(posicion, rango - posicion + 1) << " ";
-  }
-}
-
-template<class T>
-void matrix_t<T>::TriangularInferior() const {
-  int rango{get_m()};
-  for (int fila{1}; fila <= rango; ++fila) {
-    for (int columna{1}; columna <= fila; ++columna) {
-      std::cout << at(fila, columna) << " ";
-    }
-    std::cout << std::endl;
-  }
-}
-
-template<class T>
-void matrix_t<T>::TriangularSuperior() const {
-  int rango{get_m()};
-  for (int fila{1}; fila <= rango; ++fila) {
-    for (int espacios{0}; espacios <= fila -1; ++espacios) {
-      std::cout << "  ";
-    }
-    for (int columna{fila}; columna <= rango; ++columna) {
-      std::cout << at(fila, columna) << " ";
-    }
-    std::cout << std::endl;
-  }
-}
-template<class T>
-void matrix_t<T>::EscaleraSecundaria() const {
-   int rango{get_m()};
-  for (int posicion{1}; posicion <= rango; ++posicion) {
-    if (posicion == rango) {
-      std::cout << at(posicion, rango - posicion + 1);
-      break;
-    }
-    std::cout << at(posicion, rango - posicion + 1) << " " << at(posicion, rango - posicion) << " ";
-  }
-}
-
-template<class T>
-void matrix_t<T>::EscaleraBajaSecundaria() const {
-  int rango{get_m()};
-  std::cout << at(1, rango) << " ";
-  for (int posicion{2}; posicion <= rango; ++posicion) {
-    std::cout << at(posicion, rango - posicion + 2) << " " << at(posicion, rango - posicion + 1) << " ";
   }
 }

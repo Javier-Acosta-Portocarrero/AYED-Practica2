@@ -155,7 +155,6 @@ operator+(const rational_t& a, const rational_t& b)
   resultado_suma.set_num(a.get_num() * b.get_den() + b.get_num() * a.get_den());
   resultado_suma.set_den(a.get_den() * b.get_den());
   return resultado_suma;
-  // rellenar código
 }
 
 
@@ -175,7 +174,6 @@ operator-(const rational_t& a, const rational_t& b)
                                                                            ());
   resultado_resta.set_den(a.get_den() * b.get_den());
   return resultado_resta;
-  // rellenar código
 }
 
 
@@ -194,7 +192,6 @@ operator*(const rational_t& a, const rational_t& b)
   resultado_mult.set_num(a.get_num() * b.get_num());
   resultado_mult.set_den(a.get_den() * b.get_den());
   return resultado_mult;
-  // rellenar código
 }
 
 
@@ -213,7 +210,6 @@ operator/(const rational_t& a, const rational_t& b)
   resultado_div.set_num(a.get_num() * b.get_den());
   resultado_div.set_den(a.get_den() * b.get_num());
   return resultado_div;
-  // rellenar código
 }
 
 

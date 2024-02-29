@@ -42,6 +42,9 @@ public:
   void write(ostream& = cout) const;
   void read(istream& = cin);
 
+  // Modificacion
+  T SumarPosicionesMultiplosDe3() const;
+
 private:
   T *v_;
   int sz_;
@@ -235,4 +238,20 @@ scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)
   }
   return resultado;
   // rellenar código 
+}
+
+/**
+  * @brief Este metodo calcula la suma de las posiciones multiplo de 3
+  *        del vector_t dado.
+  *
+  * @return El resultado del sumatorio.
+  */
+
+template<class T>
+T vector_t<T>::SumarPosicionesMultiplosDe3() const {
+  T sumatorio{0};
+  for (int i{0}; i < get_size(); i += 3) {
+    sumatorio += at(i);
+  }
+  return sumatorio;
 }
